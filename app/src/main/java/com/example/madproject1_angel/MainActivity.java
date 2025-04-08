@@ -1,19 +1,17 @@
 package com.example.madproject1_angel;
-
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import java.util.*;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText inputValue, resultValue;
-    Spinner spinnerFrom, spinnerTo;
-    Button btnConvert;
+    EditText inputValue;
+    Spinner fromUnitSpinner, toUnitSpinner;
+    Button convertButton;
+    TextView resultText;
 
-    String[] units = {"Feet", "Inches", "Centimetres", "Metres", "Yards"};
-    Map<String, Double> unitToMeter;
+    String[] units = {"Metre", "Centimetre", "Inch", "Foot", "Yard"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,44 +19,60 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         inputValue = findViewById(R.id.inputValue);
-        resultValue = findViewById(R.id.resultValue);
-        spinnerFrom = findViewById(R.id.spinnerFrom);
-        spinnerTo = findViewById(R.id.spinnerTo);
-        btnConvert = findViewById(R.id.btnConvert);
+        fromUnitSpinner = findViewById(R.id.fromUnitSpinner);
+        toUnitSpinner = findViewById(R.id.toUnitSpinner);
+        convertButton = findViewById(R.id.convertButton);
+        resultText = findViewById(R.id.resultText);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, units);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFrom.setAdapter(adapter);
-        spinnerTo.setAdapter(adapter);
+        fromUnitSpinner.setAdapter(adapter);
+        toUnitSpinner.setAdapter(adapter);
 
-        unitToMeter = new HashMap<>();
-        unitToMeter.put("Feet", 0.3048);
-        unitToMeter.put("Inches", 0.0254);
-        unitToMeter.put("Centimetres", 0.01);
-        unitToMeter.put("Metres", 1.0);
-        unitToMeter.put("Yards", 0.9144);
-
-        btnConvert.setOnClickListener(new View.OnClickListener() {
+        convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 convert();
             }
         });
     }
 
-    void convert() {
-        String fromUnit = spinnerFrom.getSelectedItem().toString();
-        String toUnit = spinnerTo.getSelectedItem().toString();
-        String input = inputValue.getText().toString();
-
-        if(input.isEmpty()){
-            Toast.makeText(this, "Enter value", Toast.LENGTH_SHORT).show();
+    private void convert() {
+        String inputStr = inputValue.getText().toString().trim();
+        if (inputStr.isEmpty()) {
+            resultText.setText("Please enter a value.");
             return;
         }
 
-        double inputVal = Double.parseDouble(input);
-        double result = inputVal * unitToMeter.get(fromUnit) / unitToMeter.get(toUnit);
+        double input = Double.parseDouble(inputStr);
+        String fromUnit = fromUnitSpinner.getSelectedItem().toString();
+        String toUnit = toUnitSpinner.getSelectedItem().toString();
 
-        resultValue.setText(String.format("%.4f", result));
+        double metreValue = toMetres(input, fromUnit);
+        double result = fromMetres(metreValue, toUnit);
+
+        resultText.setText(String.format("%.4f", result));
+    }
+
+    private double toMetres(double value, String unit) {
+        switch (unit) {
+            case "Centimetre": return value / 100;
+            case "Inch": return value * 0.0254;
+            case "Foot": return value * 0.3048;
+            case "Yard": return value * 0.9144;
+            case "Metre":
+            default: return value;
+        }
+    }
+
+    private double fromMetres(double value, String unit) {
+        switch (unit) {
+            case "Centimetre": return value * 100;
+            case "Inch": return value / 0.0254;
+            case "Foot": return value / 0.3048;
+            case "Yard": return value / 0.9144;
+            case "Metre":
+            default: return value;
+        }
     }
 }

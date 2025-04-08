@@ -1,9 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MADproject1_angel" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- App Theme -->
+    <style name="Theme.AngelMAD" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#1976D2</item>
+        <item name="colorPrimaryVariant">#1565C0</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#03DAC5</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#1565C0</item>
     </style>
 
-    <style name="Theme.MADproject1_angel" parent="Base.Theme.MADproject1_angel" />
+    <!-- Spinner Style -->
+    <style name="SpinnerBackgroundLight" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@android:drawable/btn_dropdown</item>
+        <item name="android:popupBackground">#FFFFFF</item>
+    </style>
+
 </resources>
