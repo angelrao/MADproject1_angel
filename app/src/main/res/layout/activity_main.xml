@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Length Converter"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#000000"
         android:layout_gravity="center_horizontal"
@@ -45,15 +45,9 @@
         android:text="Convert"
         android:textAllCaps="false"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#1976D2"
+        android:backgroundTint="#ff0000"
         android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/resultText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Result will appear here"
-        android:textSize="20sp"
-        android:textColor="#000000" />
+
 
 </LinearLayout>
