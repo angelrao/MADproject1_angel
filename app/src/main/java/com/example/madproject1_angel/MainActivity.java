@@ -4,13 +4,15 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.madproject1_angel.R;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText inputValue;
     Spinner fromUnitSpinner, toUnitSpinner;
     Button convertButton;
     TextView resultText;
-
+//array of available units
     String[] units = {"Metre", "Centimetre", "Inch", "Foot", "Yard"};
 
     @Override
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         double metreValue = toMetres(input, fromUnit);
         double result = fromMetres(metreValue, toUnit);
 
-        resultText.setText(String.format("%.4f", result));
+        resultText.setText("Result : " + String.format("%.4f", result) + " " + toUnit);
     }
 
     private double toMetres(double value, String unit) {
