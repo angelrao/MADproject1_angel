@@ -8,46 +8,77 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <!-- App Heading: UNIT CONVERTER -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Length Converter"
-        android:textSize="30sp"
+        android:text="UNIT CONVERTER"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#000000"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="130dp" />
 
-    <EditText
-        android:id="@+id/inputValue"
+    <!-- Row 1: Input Value Field and From Unit Dropdown -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter value"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <Spinner
-        android:id="@+id/fromUnitSpinner"
+        <!-- Input Field to Enter Value -->
+        <EditText
+            android:id="@+id/inputValue"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="Enter value to be converted"
+            android:inputType="numberDecimal" />
+
+        <!-- Spinner to Select From Unit -->
+        <Spinner
+            android:id="@+id/fromUnitSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Row 2: Result Display and To Unit Dropdown -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp">
 
-    <Spinner
-        android:id="@+id/toUnitSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        <!-- TextView to Show Result -->
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Result : "
+            android:textSize="20sp"
+            android:textColor="#000000" />
 
+        <!-- Spinner to Select To Unit -->
+        <Spinner
+            android:id="@+id/toUnitSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Convert Button to Perform Unit Conversion -->
     <Button
         android:id="@+id/convertButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Convert"
+        android:text="CONVERT"
+        android:textSize="20sp"
         android:textAllCaps="false"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="#ff0000"
         android:textColor="#ffffff" />
 
-
-
 </LinearLayout>
+
