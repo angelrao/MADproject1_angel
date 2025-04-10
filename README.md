@@ -1,15 +1,16 @@
-Unit Converter App - Android
-A simple yet powerful Unit Converter Android application built using Java in Android Studio. This app allows users to convert between five commonly used length measurements: Feet, Inches, Centimeters, Meters, and Yards — with an intuitive and user-friendly interface
+# Project 1 - Unit Converter App
 
-✨ Features
-Convert between:
+## By:
+- Name: Angel Rao
+- University: BML Munjal University
+- Course: BTech CSE 6
 
-Feet (ft)
+## About Project:
+This Android App converts the following units:
+- Feet
+- Inches
+- Centimeters
+- Meters
+- Yards
 
-Inches (in)
-
-Centimeters (cm)
-
-Meters (m)
-
-Yards (yd)
+into each other.
